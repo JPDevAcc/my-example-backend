@@ -5,8 +5,17 @@ const router = express.Router() ;
 // Routes
 router.get('/todo/:id', todos.show) ;
 router.get("/todo", todos.index) ;
+router.post("/create", todos.create) ;
+router.delete("/delete/:id", todos.remove) ;
+router.put("/todo/:id", todos.update) ;
+
+/*
+router.get('/todo/:id', todos.show) ;
+router.get("/todo", todos.index) ;
 router.post("/todo", todos.create) ;
 router.delete("/todo/:id", todos.remove) ;
 router.put("/todo/:id", todos.update) ;
+*/
+
 
 export default router ;
