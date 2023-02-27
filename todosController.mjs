@@ -1,15 +1,13 @@
-// this will be where I store all of my functions for handling todo operations
-
-const createError = require('http-errors') ;
+import createError from 'http-errors' ;
 
 let todos = [ ] ;
 let idNo = 0 ;
 
-exports.index = function(req, res) {
+export function index(req, res) {
 	res.send(todos) ;
 }
 
-exports.create = function(req, res, next) {
+export function create(req, res, next) {
 	if (!req.body.name) {
 		return(next(createError(400, "Name is required"))) ;
 	}
@@ -24,7 +22,7 @@ exports.create = function(req, res, next) {
 	})
 }
 
-exports.show = function(req, res, next) {
+export function show(req, res, next) {
 	const todoItem = todos.find((todo) => todo.id == req.params.id)
 	console.log("todoItem: ", todoItem) ;
 	if (!todoItem) {
@@ -33,7 +31,7 @@ exports.show = function(req, res, next) {
 	res.send(todoItem) ;
 }
 
-exports.delete = function(req, res, next) {
+export function remove(req, res, next) {
 	const todoItem = todos.find((todo) => todo.id == req.params.id)
 	console.log("todoItem: ", todoItem) ;
 	if (!todoItem) {
@@ -47,7 +45,7 @@ exports.delete = function(req, res, next) {
 	})
 }
 
-exports.update = function(req, res, next) {
+export function update(req, res, next) {
 	if (!req.body.name) {
 		return(next(createError(400, "Name is required"))) ;
 	}
